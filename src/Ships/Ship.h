@@ -7,6 +7,7 @@ class Ship
 protected:
     V2 Position;
     V2 Velocity;
+    V2 Center;
     float Radius;
     float FireRate;
     float Speed;
@@ -41,5 +42,6 @@ public:
     void SetTint(Color color){ Tint = color; }
 
     virtual void MoveAndDraw(float x, float y);
-    virtual void Shoot();
+    virtual void CheckShootingStatus();
+    virtual void TakeDamage();
 };

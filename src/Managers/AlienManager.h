@@ -1,11 +1,13 @@
 ﻿#pragma once
 #include "Ships/AlienShip.h"
 #include "Bullets/BulletPool.h"
+#include "Ships/Player.h"
 
 class AlienManager
 {
 public:
     AlienShip* aliens;
+    BulletPool* bulletPool;
     int Amount;
     float MaxPerLine;
 
@@ -15,5 +17,6 @@ public:
 
     void UpdateAliens();
     void InitializeAliens();
-    void CheckForCollisions(BulletPool* bulletPool);
+    void CheckForAlienCollisions(BulletPool* playerBulletPool);
+    void CheckForPlayerCollisions(Player* player);
 };

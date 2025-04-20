@@ -5,15 +5,16 @@ AlienShip::~AlienShip()
     
 }
 
-void AlienShip::Shoot()
+void AlienShip::CheckShootingStatus()
 {
-    
+    currentFireRate -= FireRate * GetFrameTime();
 }
 
 AlienShip::AlienShip()
 {
     IsAlive = true;
     Position = V2(-100, -100);
+    currentFireRate = FireRate + GetRandomValue(0, maxRandInterval);
     Velocity = V2_ZERO;
     Radius = 15;
     FireRate = 2.f;
@@ -25,6 +26,7 @@ AlienShip::AlienShip(V2 position)
 {
     IsAlive = true;
     Position = position;
+    currentFireRate = FireRate + GetRandomValue(0, 15);
     Velocity = V2_ZERO;
     Radius = 15;
     FireRate = 2.f;
@@ -41,4 +43,13 @@ void AlienShip::MoveAndDraw(float x, float y)
 
     DrawCircle(Position.x, Position.y, Radius, Tint);
 }
+
+void AlienShip::TakeDamage()
+{
+    IsAlive = false;
+    SetPosition(V2(-100, -100));
+    
+    GameManager::instance->AddScore(100);
+}
+
 

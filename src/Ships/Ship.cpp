@@ -5,8 +5,14 @@ void Ship::MoveAndDraw(float x, float y)
     
 }
 
-void Ship::Shoot()
+void Ship::CheckShootingStatus()
 {
     
 }
+
+void Ship::TakeDamage()
+{
+    
+}
+
 

@@ -26,12 +26,15 @@ void BulletPool::ActivateBullet(V2 Position, V2 Direction, Color color)
             return;
         }
     }
+
+    std::cout<< "NO MORE BULLETS" << std::endl;
 }
 
 void BulletPool::Pool(int id)
 {
     std::cout<< "POOL" << std::endl;
     bullets[id] = Bullet(-900, -600, V2_ZERO, RED);
+    bullets[id].IsActive = false;
 }
 
 void BulletPool::UpdateBullets()
@@ -42,7 +45,7 @@ void BulletPool::UpdateBullets()
         if(bullets[i].IsActive)
         {
             bullets[i].MoveAndDraw();
-            if(bullets[i].Position.y < -10) Pool(i);
+            if(bullets[i].Position.y < -10 || bullets[i].Position.y > GetScreenHeight() + 5) Pool(i);
         }
     }
 }

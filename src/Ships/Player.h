@@ -6,7 +6,10 @@ class Player : public Ship
 public:
     Player();
 
+    int hp;
+
     void MoveAndDraw(float x, float y) override;
-    void Shoot() override;
+    void CheckShootingStatus() override;
+    void TakeDamage() override;
     
 };
